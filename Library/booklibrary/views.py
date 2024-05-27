@@ -136,8 +136,8 @@ def profile(request):
     profile = request.user.profile
     reservations = Reservation.objects.filter(user=request.user)
     borrowed = Borrow.objects.filter(user=request.user, returned_at__isnull=True)
-    books = Book.objects.filter(notify_when_available=True)
-    return render(request, 'profile.html', {'profile':profile, 'reservations':reservations, 'borrowed':borrowed, 'books':books})
+    userbooks = UserBookNotification.objects.filter(user = request.user, notified=False)
+    return render(request, 'profile.html', {'profile':profile, 'reservations':reservations, 'borrowed':borrowed, 'userbooks':userbooks})
 
 
 @login_required
