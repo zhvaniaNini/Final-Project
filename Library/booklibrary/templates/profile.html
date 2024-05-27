@@ -68,12 +68,12 @@
             <div class="card-body">
             <p class="card-text">
                 <ul>
-                    {% for borrow in borrowed %}
-                        <li>{{ borrow.book.title }}</li>
-                        <p>Borrow Date: {{ borrow.borrowed_at }}</p>
-                        {% empty %}
-                        <li>No borrowed books.</li>
-                    {% endfor %}
+                    {% for userbook in userbooks %}
+                      <li>{{ userbook.book.title }}</li>
+                      {% empty %}
+                      <li>Not waiting for a notification.</li>
+                    <br>
+                  {% endfor %}
                 </ul></p>
             </div>
         </div>
